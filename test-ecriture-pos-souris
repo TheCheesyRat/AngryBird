@@ -1,0 +1,22 @@
+import pyxel
+
+class App:
+    def __init__(self):
+        pyxel.init(160, 120)  # Initialise Pyxel
+        pyxel.mouse(True)
+        self.mouse_x = 0
+        self.mouse_y = 0
+        self.mouse_y = 0
+        pyxel.run(self.update, self.draw)  # Lance l'application
+
+    def update(self):
+        if pyxel.btnp(pyxel.KEY_Q):
+            pyxel.quit()
+        self.mouse_x = pyxel.mouse_x
+        self.mouse_y = pyxel.mouse_y  # Récupère la position de la souris
+
+    def draw(self):
+        pyxel.cls(0)  # Efface l'écran (couleur 0 = noir)
+        pyxel.text(10, 10, f"Souris : ({self.mouse_x}, {self.mouse_y})", 7)  # Affiche le texte (couleur 7 = blanc)
+        #il faut un f print pour éviter un crash de l'instance
+App()  # Crée une instance de l'application
